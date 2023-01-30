@@ -1,6 +1,6 @@
 # Microsoft Dataverse Power Platform License Assignment Accelerator
 
-Microsoft Power Platform Dataverse Accelerator allows you to track Contracted License Assignments to People and Cost Centers/Agencies/Departments. These licenses can then be assigned to individual employees and track which cost center the charges apply to.
+Microsoft Dataverse Power Platform License Assignment Accelerator allows you to track Contracted License Assignments to People and Cost Centers/Agencies/Departments. These licenses can then be assigned to individual employees and track which cost center the charges apply to.
 
 Example: You contract for 1,000 Microsoft 365 E5/G5 licenses for 3 years at $xx per license, per month. You enter data into the **Contract** table first (e.g., Microsoft EA), including the date the contract will expire. Next, enter data for a related **Contract Line** (e.g., Microsoft 365 E5/G5), including details like the total number of licenses purchased, cost per license, and cost to charge out to the cost center. Once this is set up, you can then assign any of those licenses to a specific person and cost center. After that you can track who has what licenses assigned and set up an optional monthly chargeback invoice to that cost center.
 
@@ -10,10 +10,10 @@ Example: You contract for 1,000 Microsoft 365 E5/G5 licenses for 3 years at $xx 
 * Model Driven App for overall data entry and license assignments
 * Customizable Dataverse tables
 * Power Automate Flows for monitoring and notifying when contract expiration dates are approaching, and usage parameters are exceeded
-* The app is NOT specific to Microsoft licenses, it can be used to monitor any number of contract vendors (e.g., Amazon, Google, SAP, Adobe) that have monthly or annual per user license fees.
-* Ability to add optional markup to each monthly license for support or other associated overhead costs.
+* The app is NOT specific to Microsoft licenses, it can be used to monitor contracts and license counts any number of vendors you work with (e.g., Amazon, Google, SAP, Adobe) that have monthly or annual per user license fees.
+* Ability to add optional cost markup to each monthly license for internal support or other associated overhead costs.
 * Cascading updates when Contracts are terminated, costs change, or employees are off boarded.
-* Tablet and mobile friendly based Canvas Apps that can be deployed to your employees for them to see what has been assigned to them, and they can request available licenses logged in contract lines.
+* Tablet and mobile friendly based Canvas Apps that can be deployed to your employees for them to see what has been assigned to them, and they can request available licenses from the pool.
 
 ## Requirements
 
