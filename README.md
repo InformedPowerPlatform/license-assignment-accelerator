@@ -18,6 +18,11 @@ Example: You contract for 1,000 Microsoft Power Platform per user liceses for 3 
 ### Requirements:
 * Power Platform Environment with Dataverse database deployed
 * Each Persona will need a Power Platform per user (or per app) license assigned to them in the Microsoft 365 admin center
+    - Contract Owner: Responsible for top level contract, sets Line Items, Costs, etc.
+    - IT/Operations Staff: Assigns/Deactivates licenses
+    - Cost Center Owner: Monitors Costs and Assignments
+    - End User (Optional): Can view existing licenses and request new
+
 
 ### Installation and Setup
 * Download the latest solution file from the repository [Releases](https://github.com/InformedPowerPlatform/license-assignment-accelerator/releases)
