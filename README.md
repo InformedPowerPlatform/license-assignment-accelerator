@@ -1,4 +1,4 @@
-# license-assignment-accelerator
+# Microft Dataverse Power Platform License Assignment Accelerator
 Microsoft Power Platform Dataverse Accelerator to allow you to track Contracted License Assignments to People and Cost Centers/Agencies/Departments. These licenses can then be assigned out to individual employees and track which cost center the charges apply to.
 
 Example: You contract for 1,000 Microsoft Power Platform per user liceses for 3 years at $xx per license, per month. You enter the contract (Microsoft EA), Contract Line (PP Per user) details into the respective tables. Then Assign 1 of those licenses to a specific person and cost center (department). After that you can track who has what licenses assigned and also setup an optional monthly chargeback invoice to that cost center.
