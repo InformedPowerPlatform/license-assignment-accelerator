@@ -20,7 +20,7 @@ Example: You contract for 1,000 Microsoft Power Platform per user liceses for 3 
 * Each Persona will need a Power Platform per user (or per app) license assigned to them in the Microsoft 365 admin center
 
 ### Installation and Setup
-* Download the latest solution file from the repository
+* Download the latest solution file from the repository [Releases](https://github.com/InformedPowerPlatform/license-assignment-accelerator/releases)
 * Install to your Power Platform environment
 * Open the Solution in the PP Maker Site
 * Navigate to the Cloud Flows section and manually run the flow titled ***MSFTPP.PA.Settings.InitialLoad***
