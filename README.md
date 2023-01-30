@@ -19,10 +19,10 @@ Example: You contract for 1,000 Microsoft 365 E5/G5 licenses for 3 years at $xx 
 
 * Power Platform Environment with Dataverse database deployed
 * Each Persona will need a Power Platform per user (or per app) license assigned to them in the Microsoft 365 admin center
-  * Contract Owner: Responsible for top level contract, sets Line Items, Costs, etc.
-    * IT/Operations Staff: Assigns/Deactivates licenses
-    * Cost Center Owner: Monitors Costs and Assignments
-    * End User (Optional): Can view existing licenses assigned, and request new licenses from the available pool
+  * ***Contract Owner***: Responsible for top level contract, sets Line Items, Costs, etc.
+  * ***IT/Operations Staff***: Assigns/Deactivates licenses
+  * ***Cost Center Owner***: Monitors Costs and Assignments
+  * ***End User (Optional)***: Can view existing licenses assigned, and request new licenses from the available pool
 
 ## Installation and Setup
 
@@ -46,9 +46,9 @@ Example: You contract for 1,000 Microsoft 365 E5/G5 licenses for 3 years at $xx 
   * The Owner can be an individual user, or a Team. When the notifications are sent, it will use the owner field to determine who to send the notification to.
 * Next Enter the **Contract Lines**. These are the individual descriptive types of licenses that will be assigned to people.
   * e.g. For a Microsoft Enterprise Agreement, you might have licenses for Microsoft 365, Dynamics 365 Customer Service, Power Platform Per User, etc. These would be **Contract Lines**.
-  * To simplify the entry of contracts lines, click the ***+ New License Contract Line*** button in the Contract Lines subgrid for the specific Contract you are adding lines to.
+  * To simplify the entry of contract lines, click the ***+ New License Contract Line*** button in the Contract Lines subgrid for the specific Contract you are adding lines to.
     * Enter a Name, Owner, Total License Count, Charge Rate (cost to be charged to the cost center), and the Contract Rate.
-    * Enter a **Notify Threshold Pct** as a decimal value. This is the percentage at which notifications will be sent when the remaining count of licenses drops below the threshold.
+    * Enter a **Notify Threshold Pct** as a decimal value. This is the percentage at which notifications will be sent when the total count of assigned licenses exceeds the threshold.
       * E.g. If you have 100 licenses and you want to be notified when your assigned count exceeds 85, enter 0.85 as a Notify Threshold Pct.
 
 ## Assignments
@@ -56,7 +56,7 @@ Example: You contract for 1,000 Microsoft 365 E5/G5 licenses for 3 years at $xx 
 To set up a **License assignment**, the easiest place to do this is on the **License Contract Line** form.
 
 * Open the **License Contract Line** form for the row you wish to add a new assignment for.
-* Click the **+ New License Assignment** button in the Assignments sub-grid on this form.
+* Click the **+ New License Assignment** button in the Assignments sub-grid on this form. This should open a quick create form.
 * Select the Assignee name from the list of available assignees. **Cost Center** should be selected for that assignee if they have a default set. You can always override the Cost Center assignment if needed.
 * Optionally select the Date of this assignment for reference.
 * Click **Save and Close** to save the assignment.
