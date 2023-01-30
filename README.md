@@ -65,10 +65,6 @@ If you are utilizing the Power Platform Canvas App(s) where users can request a 
 
 
 
-
-
-
-
 ### Simplified Entity Relationship Diagram
 
 ![ERD](ERDArchitecture.png?raw=true "ERD")
