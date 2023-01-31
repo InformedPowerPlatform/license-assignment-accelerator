@@ -40,8 +40,8 @@ Example: You contract for 1,000 Microsoft 365 E5/G5 licenses for 3 years at $xx 
   * MSFTPP.PA.ChildFlow.GetTeamMemberEmails
 * There is an Environment Variable called ***NotificationFromAddress*** that will need to be updated
   * Set this value to an email box that can send internal notification. The AD user selected when the related connection reference for Outlook was created on install will need access to send as from this mailbox.
-    * Example 1: If you used service_account@youremail.com as the login, and notifications@youremail.com as the FROM address, the service_account@youremail.com will need send as rights to the notifications@youremail.com mailbox in Microsoft 365 Exchange.
-    * Example 2: If you used service_account@youremail.com as the login, set the environment variable to service_account@youremail.com as well.
+    * Example 1: If you used service_account@youremail.com as the login for the Outlook connection reference, and then set notifications@youremail.com as the FROM address in the Environment Variable, the service_account@youremail.com login will need **send as** rights to the notifications@youremail.com mailbox in Microsoft 365 Exchange.
+    * Example 2: If you used service_account@youremail.com as the login for the Outlook connection reference, you can set the environment variable to service_account@youremail.com as well.
 * There are 2 Cloud flows that are turned OFF by default that will need to be turned ON if you wish to use the notification features related to contract expiry and license counts. You will need to edit each one to turn the Cloud Flow ON. Double check the ***FROM*** email address is set to the environment variable above.
   * MSFTPP.PA.ContractLines.Scheduled.CheckLicenseCount
   * MSFTPP.PA.Contract.Schedule.CheckForReminder
