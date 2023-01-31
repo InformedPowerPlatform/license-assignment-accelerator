@@ -31,7 +31,12 @@ Example: You contract for 1,000 Microsoft 365 E5/G5 licenses for 3 years at $xx 
 * Open the Solution in the PP Maker Site
 * Navigate to the Cloud Flows section and manually run the flow titled ***MSFTPP.PA.Settings.InitialLoad***
   * This will set up 4 levels of Reminders for contract expiration notifications. These can be later modified to your liking by selecting the License Admin Settings area in the Model-driven app.
-  * There are 2 Cloud flows that are turned OFF by default that will need to be turned ON if you wish to use the notification features related to contract expiry and license counts
+* There is a child flow that gathers the members of a team into a list usable by the Outlook action. You will need to open this flow for editing and save it so that it will be in a ***Published*** state.
+  * MSFTPP.PA.ChildFlow.GetTeamMemberEmails 
+* There are 2 Cloud flows that are turned OFF by default that will need to be turned ON if you wish to use the notification features related to contract expiry and license counts. You will need to edit each one and update the Outlook action that sends the email at the end of the flow to update the ***FROM*** address.
+  * MSFTPP.PA.ContractLines.Scheduled.CheckLicenseCount 
+  * MSFTPP.PA.Contract.Schedule.CheckForReminder 
+
 * From the Apps navigation in the Power Apps maker tool, Open the **License Contracts** Model-Driven app
 * Navigate to the Admin Grouping and select the **License Cost Centers** table
   * Enter your Cost Centers that you wish to track as part of the individual assignments. These could be your internal Agencies, Departments, Teams, etc.
