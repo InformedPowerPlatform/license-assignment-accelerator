@@ -26,16 +26,27 @@ Example: You contract for 1,000 Microsoft 365 E5/G5 licenses for 3 years at $xx 
 
 ## Installation and Setup
 
-* Download the latest solution file from the [Releases](https://github.com/InformedPowerPlatform/license-assignment-accelerator/releases) page
-* Install to your Power Platform environment
-* Open the Solution in the PP Maker Site
+* Download the latest solution files from the [Releases](https://github.com/InformedPowerPlatform/license-assignment-accelerator/releases) page. For Initial install, there are 2 solution files
+  * Install 1st: LicenseAssignment_x_x_x_x.zip
+  * Install 2nd: LicenseAssignmentPAFlowsOnly_x_x_x_x.zip
+  * To ensure a correct install, Publish All Customizations after importing both solutions
+
+## Configure Cloud Flows
+
+* Open the ***LicenseAssignmentPAFlowsOnly*** Solution in the PP Maker Site
 * Navigate to the Cloud Flows section and manually run the flow titled ***MSFTPP.PA.Settings.InitialLoad***
   * This will set up 4 levels of Reminders for contract expiration notifications. These can be later modified to your liking by selecting the License Admin Settings area in the Model-driven app.
 * There is a child flow that gathers the members of a team into a list usable by the Outlook action. You will need to open this flow for editing and save it so that it will be in a ***Published*** state.
-  * MSFTPP.PA.ChildFlow.GetTeamMemberEmails 
-* There are 2 Cloud flows that are turned OFF by default that will need to be turned ON if you wish to use the notification features related to contract expiry and license counts. You will need to edit each one and update the Outlook action that sends the email at the end of the flow to update the ***FROM*** address.
-  * MSFTPP.PA.ContractLines.Scheduled.CheckLicenseCount 
-  * MSFTPP.PA.Contract.Schedule.CheckForReminder 
+  * MSFTPP.PA.ChildFlow.GetTeamMemberEmails
+* There is an Environment Variable called ***NotificationFromAddress*** that will need to be updated
+  * Set this value to an email box that can send internal notification. The AD user selected when the related connection reference for Outlook was created on install will need access to send as from this mailbox.
+    * Example 1: If you used service_account@youremail.com as the login, and notifications@youremail.com as the FROM address, the service_account@youremail.com will need send as rights to the notifications@youremail.com mailbox in Microsoft 365 Exchange.
+    * Example 2: If you used service_account@youremail.com as the login, set the environment variable to service_account@youremail.com as well.
+* There are 2 Cloud flows that are turned OFF by default that will need to be turned ON if you wish to use the notification features related to contract expiry and license counts. You will need to edit each one to turn the Cloud Flow ON. Double check the ***FROM*** email address is set to the environment variable above.
+  * MSFTPP.PA.ContractLines.Scheduled.CheckLicenseCount
+  * MSFTPP.PA.Contract.Schedule.CheckForReminder
+
+## Configure Data
 
 * From the Apps navigation in the Power Apps maker tool, Open the **License Contracts** Model-Driven app
 * Navigate to the Admin Grouping and select the **License Cost Centers** table
@@ -44,7 +55,7 @@ Example: You contract for 1,000 Microsoft 365 E5/G5 licenses for 3 years at $xx 
   * Enter or Import all of your possible assignees to this table. If possible, set the person’s default cost center to simplify the assignments.
   * If you plan to allow users to track their own license assignments, as well as to request new assignments, those employees will also need to be ***users*** in the Dataverse environment. Once they are added into the *systemuser* table, you would select their Related User on the License Assignee row.
 
-## Contracts
+### Contracts
 
 * Navigate to **License Contracts** and enter any high-level contracts you want to track
   * Expiry Date is used to calculate the notifications sent out as contracts are about to expire.
@@ -56,7 +67,7 @@ Example: You contract for 1,000 Microsoft 365 E5/G5 licenses for 3 years at $xx 
     * Enter a **Notify Threshold Pct** as a decimal value. This is the percentage at which notifications will be sent when the total count of assigned licenses exceeds the threshold.
       * E.g. If you have 100 licenses and you want to be notified when your assigned count exceeds 85, enter 0.85 as a Notify Threshold Pct.
 
-## Assignments
+### Assignments
 
 To set up a **License assignment**, the easiest place to do this is on the **License Contract Line** form.
 
