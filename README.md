@@ -31,7 +31,7 @@ Example: You contract for 1,000 Microsoft 365 E5/G5 licenses for 3 years at $xx 
 
 * ***Best Practice:*** While not required, it is a best practice to install these solutions into their own Power Platform environment. This will allow you to restrict access through Azure AD security roles and teams.
   * **NOTE:** It is NOT recommended that you install these solutions into your (Default) environment.
- 
+
 * Download the latest solution files from the [Releases](https://github.com/InformedPowerPlatform/license-assignment-accelerator/releases) page. For Initial install, there are 2 solution files
   * Install 1st: LicenseAssignment_x_x_x_x.zip
   * Install 2nd: LicenseAssignmentPAFlowsOnly_x_x_x_x.zip
@@ -68,9 +68,9 @@ Example: You contract for 1,000 Microsoft 365 E5/G5 licenses for 3 years at $xx 
 * Navigate to **License Contracts** table and enter any high-level contracts you want to track
   * Expiry Date is used to calculate the notifications sent out as contracts are about to expire.
   * The Owner can be an individual user, or a Team. When the notifications are sent, it will use the owner field to determine who to send the notification to.
-* Navigate to the **License Contract Lines** table. These are the individual descriptive types of licenses that will be assigned to people.
+* Next we will populate the **License Contract Lines** table. These are the individual descriptive types of licenses that will be assigned to people.
   * e.g. For a Microsoft Enterprise Agreement, you might have licenses for Microsoft 365, Dynamics 365 Customer Service, Power Platform Per User, etc. These would be **License Contract Lines**.
-  * To simplify the entry of contract lines, click the ***+ New License Contract Line*** button in the Contract Lines subgrid for the specific Contract you are adding lines to.
+  * To simplify the entry of contract lines, while you are editing the individual **License Contract** click the ***+ New License Contract Line*** button in the Contract Lines subgrid.
     * Enter a Name, Owner, Total License Count, Charge Rate (cost to be charged to the cost center), and the Contract Rate.
     * Enter a **Notify Threshold Pct** as a decimal value. This is the percentage at which notifications will be sent when the total count of assigned licenses exceeds the threshold.
       * E.g. If you have 100 licenses and you want to be notified when your assigned count exceeds 85, enter 0.85 as a Notify Threshold Pct.
