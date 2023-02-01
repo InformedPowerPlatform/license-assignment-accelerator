@@ -19,49 +19,54 @@ Example: You contract for 1,000 Microsoft 365 E5/G5 licenses for 3 years at $xx 
 
 * Power Platform Environment with Dataverse database deployed
 * Each Persona will need a Power Platform per user (or per app) license assigned to them in the Microsoft 365 admin center
-  * ***Contract Owner***: Responsible for top level contract, sets Line Items, Costs, etc.
-  * ***IT/Operations Staff***: Assigns/Deactivates licenses
-  * ***Cost Center Owner***: Monitors Costs and Assignments
-  * ***End User (Optional)***: Can view existing licenses assigned, and request new licenses from the available pool
+
+## Personas
+
+* ***Contract Owner***: Responsible for top level contract, sets Line Items, Costs, etc. Will receive notifications as contracts reacy expiry dates, or contract lines approach or exceed thresholds.
+* ***IT/Operations Staff***: Assigns/Deactivates licenses. This can also be done with automation from external systems through the Power Platform API.
+* ***Cost Center Owner***: Monitors Costs and Assignments.
+* ***End User (Optional)***: Can view existing licenses assigned, and request new licenses from the available pool.
 
 ## Installation and Setup
 
 * Download the latest solution files from the [Releases](https://github.com/InformedPowerPlatform/license-assignment-accelerator/releases) page. For Initial install, there are 2 solution files
   * Install 1st: LicenseAssignment_x_x_x_x.zip
   * Install 2nd: LicenseAssignmentPAFlowsOnly_x_x_x_x.zip
-  * To ensure a correct install, Publish All Customizations after importing both solutions
+  * **Tip:** To ensure smooth operation, apply a ***Publish All Customizations*** to the solution after import is complete.
 
 ## Configure Cloud Flows
 
-* Open the ***LicenseAssignmentPAFlowsOnly*** Solution in the PP Maker Site
-* Navigate to the Cloud Flows section and manually run the flow titled ***MSFTPP.PA.Settings.InitialLoad***
-  * This will set up 4 levels of Reminders for contract expiration notifications. These can be later modified to your liking by selecting the License Admin Settings area in the Model-driven app.
-* There is a child flow that gathers the members of a team into a list usable by the Outlook action. You will need to open this flow for editing and save it so that it will be in a ***Published*** state.
-  * MSFTPP.PA.ChildFlow.GetTeamMemberEmails
+* Open the ***LicenseAssignmentPAFlowsOnly*** Solution in the Power Apps Maker Site
+  * Commercial M365 Tenant: https://make.powerapps.com/
+  * US Govt GCC Tenant: https://make.gov.powerapps.us/ 
+* Navigate to the ***Cloud Flows*** section and manually run the flow titled ***MSFTPP.PA.Settings.InitialLoad***
+  * This will set up 4 levels of Reminders for contract expiration notifications. These can be later modified to your requirements by selecting the ***License Admin Settings*** table in the Model-driven app.
+* Open the Cloud Flow titled ***MSFTPP.PA.ChildFlow.GetTeamMemberEmails*** for editing. This child flow gathers the members of a team into a list usable by the Outlook action in the notification flows. You will need to open this flow for editing and save it so that it will be in a ***Published*** state.
 * There is an Environment Variable called ***NotificationFromAddress*** that will need to be updated
-  * Set this value to an email box that can send internal notification. The AD user selected when the related connection reference for Outlook was created on install will need access to send as from this mailbox.
-    * Example 1: If you used service_account@youremail.com as the login for the Outlook connection reference, and then set notifications@youremail.com as the FROM address in the Environment Variable, the service_account@youremail.com login will need **send as** rights to the notifications@youremail.com mailbox in Microsoft 365 Exchange.
-    * Example 2: If you used service_account@youremail.com as the login for the Outlook connection reference, you can set the environment variable to service_account@youremail.com as well.
+  * Set this value to an email box that can send internal notifications for your organiztion. 
+  * During the initial installation of the solution, a connection reference to the Outlook connector was created. The Azure AD user selected when this connection reference was created will need **Send As** access from this mailbox.
+    * Example 1: If you used service_account@youremail.com as the Azure AD login for the Outlook connection reference, and then set notifications@youremail.com as the FROM address in the Environment Variable, the service_account@youremail.com login will need **Send As** rights to the notifications@youremail.com mailbox in Microsoft 365 Exchange.
+    * Example 2: If you used service_account@youremail.com as the login for the Outlook connection reference, you can also set the environment variable to service_account@youremail.com. 
 * There are 2 Cloud flows that are turned OFF by default that will need to be turned ON if you wish to use the notification features related to contract expiry and license counts. You will need to edit each one to turn the Cloud Flow ON. Double check the ***FROM*** email address is set to the environment variable above.
-  * MSFTPP.PA.ContractLines.Scheduled.CheckLicenseCount
-  * MSFTPP.PA.Contract.Schedule.CheckForReminder
+  * ***MSFTPP.PA.ContractLines.Scheduled.CheckLicenseCount***
+  * ***MSFTPP.PA.Contract.Schedule.CheckForReminder***
 
 ## Configure Data
 
-* From the Apps navigation in the Power Apps maker tool, Open the **License Contracts** Model-Driven app
-* Navigate to the Admin Grouping and select the **License Cost Centers** table
+* From the ***Apps*** navigation in the Power Apps maker site, Open the **License Contracts** Model-Driven app
+* Navigate to the Admin group and select the **License Cost Centers** table
   * Enter your Cost Centers that you wish to track as part of the individual assignments. These could be your internal Agencies, Departments, Teams, etc.
-* Navigate to the Admin Grouping and Select **License Assignees**
-  * Enter or Import all of your possible assignees to this table. If possible, set the person’s default cost center to simplify the assignments.
-  * If you plan to allow users to track their own license assignments, as well as to request new assignments, those employees will also need to be ***users*** in the Dataverse environment. Once they are added into the *systemuser* table, you would select their Related User on the License Assignee row.
+* Navigate to the Admin group and Select **License Assignees**
+  * Enter or Import all of your possible assignees to this table. If available, set the assignee's default cost center to simplify the assignments.
+  * ***Optional:*** If you plan to allow users to track their own license assignments, and to request new assignments, those assignee's will also need to be ***users*** in the Dataverse environment. Once they are added into the *systemuser* table, you would select their Related User on the License Assignee row.
 
 ### Contracts
 
-* Navigate to **License Contracts** and enter any high-level contracts you want to track
+* Navigate to **License Contracts** table and enter any high-level contracts you want to track
   * Expiry Date is used to calculate the notifications sent out as contracts are about to expire.
   * The Owner can be an individual user, or a Team. When the notifications are sent, it will use the owner field to determine who to send the notification to.
-* Next Enter the **Contract Lines**. These are the individual descriptive types of licenses that will be assigned to people.
-  * e.g. For a Microsoft Enterprise Agreement, you might have licenses for Microsoft 365, Dynamics 365 Customer Service, Power Platform Per User, etc. These would be **Contract Lines**.
+* Navigate to the **License Contract Lines** table. These are the individual descriptive types of licenses that will be assigned to people.
+  * e.g. For a Microsoft Enterprise Agreement, you might have licenses for Microsoft 365, Dynamics 365 Customer Service, Power Platform Per User, etc. These would be **License Contract Lines**.
   * To simplify the entry of contract lines, click the ***+ New License Contract Line*** button in the Contract Lines subgrid for the specific Contract you are adding lines to.
     * Enter a Name, Owner, Total License Count, Charge Rate (cost to be charged to the cost center), and the Contract Rate.
     * Enter a **Notify Threshold Pct** as a decimal value. This is the percentage at which notifications will be sent when the total count of assigned licenses exceeds the threshold.
@@ -71,11 +76,12 @@ Example: You contract for 1,000 Microsoft 365 E5/G5 licenses for 3 years at $xx 
 
 To set up a **License assignment**, the easiest place to do this is on the **License Contract Line** form.
 
-* Open the **License Contract Line** form for the row you wish to add a new assignment for.
+* Navigate to and edit the **License Contract Line** row that you wish to add a new assignment for.
 * Click the **+ New License Assignment** button in the Assignments sub-grid on this form. This should open a quick create form.
-* Select the Assignee name from the list of available assignees. **Cost Center** should be selected for that assignee if they have a default set. You can always override the Cost Center assignment if needed.
+* Select the Assignee name from the list of available assignees. **Cost Center** should be selected for that assignee if they have a default set.
+  * Note: You can always override the Cost Center assignment if needed.
 * Optionally select the Date of this assignment for reference.
-* Click **Save and Close** to save the assignment.
+* Click **Save and Close** to save the assignment, or **Save and New** to create another assignment for the same contract line.
 
 ## Requests
 
