@@ -29,6 +29,9 @@ Example: You contract for 1,000 Microsoft 365 E5/G5 licenses for 3 years at $xx 
 
 ## Installation and Setup
 
+* ***Best Practice:*** While not required, it is a best practice to install these solutions into their own Power Platform environment. This will allow you to restrict access through Azure AD security roles and teams.
+  * **NOTE:** It is NOT recommended that you install these solutions into your (Default) environment.
+ 
 * Download the latest solution files from the [Releases](https://github.com/InformedPowerPlatform/license-assignment-accelerator/releases) page. For Initial install, there are 2 solution files
   * Install 1st: LicenseAssignment_x_x_x_x.zip
   * Install 2nd: LicenseAssignmentPAFlowsOnly_x_x_x_x.zip
