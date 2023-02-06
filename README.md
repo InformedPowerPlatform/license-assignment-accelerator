@@ -99,10 +99,10 @@ If you are utilizing the Power Platform Canvas App(s) where users can request a 
 
 
 # Release Notes
-##v3.0.0.3 
+## v3.0.0.3 
 * Added a Quantity field to the Assignment table, updated the rollups to use qty * cost.
 
-##v3.0.0.1 
+## v3.0.0.1 
 * Separated the Main Solution from the Power Automate Cloud Flows and Connection References. Added a new Environment Variable to set the FROM address on the Cloud Flow notifications.
 
 
