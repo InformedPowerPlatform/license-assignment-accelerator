@@ -38,7 +38,7 @@ Example: You contract for 1,000 Microsoft 365 E5/G5 licenses for 3 years at $xx 
 
 ## Personas
 
-* ***Contract Owner***: Responsible for top level contract, sets Line Items, Costs, etc. Will receive notifications as contracts reacy expiry dates, or contract lines approach or exceed thresholds.
+* ***Contract Owner***: Responsible for top level contract, sets Line Items, Costs, etc. Will receive notifications as contracts reach expiry dates, or contract lines approach or exceed thresholds.
 * ***IT/Operations Staff***: Assigns/Deactivates licenses. This can also be done with automation from external systems through the Power Platform API.
 * ***Cost Center Owner***: Monitors Costs and Assignments.
 * ***End User (Optional)***: Can view existing licenses assigned, and request new licenses from the available pool.
