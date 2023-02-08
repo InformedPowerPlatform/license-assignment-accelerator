@@ -4,6 +4,22 @@ Microsoft Dataverse Power Platform License Assignment Accelerator allows you to 
 
 Example: You contract for 1,000 Microsoft 365 E5/G5 licenses for 3 years at $xx per license, per month. You enter data into the **Contract** table first (e.g., Microsoft EA), including the date the contract will expire. Next, enter data for a related **Contract Line** (e.g., Microsoft 365 E5/G5), including details like the total number of licenses purchased, cost per license, and cost to charge out to the cost center. Once this is set up, you can then assign any of those licenses to a specific person and cost center. After that you can track who has what licenses assigned and set up an optional monthly chargeback invoice to that cost center.
 
+## Contents
+
+* [Requirements](#requirements)
+* [Personas](#personas)
+* [Installation and Setup](#installation-and-setup)
+* [Configure Cloud Flows](#configure-cloud-flows)
+* [Configure Data](#configure-data)
+  * [Cost Centers](#cost-centers)
+  * [Assignees](#assignees)
+* [Configure Contracts and Line Items](#contracts)
+  * [Contract Lines](#contract-lines)
+* [Create Assignments](#assignments)
+* [Process Requests](#requests)
+* [ERD](#simplified-entity-relationship-diagram)
+* [Release Notes](#release-notes)
+
 ## Features Include
 
 * An Unmanaged solution, so you can easily modify it for your own needs.
@@ -57,17 +73,27 @@ Example: You contract for 1,000 Microsoft 365 E5/G5 licenses for 3 years at $xx 
 ## Configure Data
 
 * From the ***Apps*** navigation in the Power Apps maker site, Open the **License Contracts** Model-Driven app
+
+### Cost Centers
+
 * Navigate to the Admin group and select the **License Cost Centers** table
   * Enter your Cost Centers that you wish to track as part of the individual assignments. These could be your internal Agencies, Departments, Teams, etc.
+
+### Assignees
+
 * Navigate to the Admin group and Select **License Assignees**
   * Enter or Import all of your possible assignees to this table. If available, set the assignee's default cost center to simplify the assignments.
+  * ***Note:*** You may want to use teams, departments, divisions, etc. as your assignees instead of individual people. If so, you can re-label the first/last name fields to use those names instead. Use the Power Apps Maker tool and edit the form in the **License Assignees** table to change the labels. When creating an ***assignment*** row, you can set the quanity of licenses being assigned to a number larger than the default of 1.
   * ***Optional:*** If you plan to allow users to track their own license assignments, and to request new assignments, those assignee's will also need to be ***users*** in the Dataverse environment. Once they are added into the *systemuser* table, you would select their Related User on the License Assignee row.
 
 ### Contracts
 
-* Navigate to **License Contracts** table and enter any high-level contracts you want to track
+* Navigate to **License Contracts** table and enter any high-level contracts you want to track.
   * Expiry Date is used to calculate the notifications sent out as contracts are about to expire.
   * The Owner can be an individual user, or a Team. When the notifications are sent, it will use the owner field to determine who to send the notification to.
+
+### Contract Lines
+
 * Next we will populate the **License Contract Lines** table. These are the individual descriptive types of licenses that will be assigned to people.
   * e.g. For a Microsoft Enterprise Agreement, you might have licenses for Microsoft 365, Dynamics 365 Customer Service, Power Platform Per User, etc. These would be **License Contract Lines**.
   * To simplify the entry of contract lines, while you are editing the individual **License Contract** click the ***+ New License Contract Line*** button in the Contract Lines subgrid.
@@ -84,6 +110,7 @@ To set up a **License assignment**, the easiest place to do this is on the **Lic
 * Select the Assignee name from the list of available assignees. **Cost Center** should be selected for that assignee if they have a default set.
   * Note: You can always override the Cost Center assignment if needed.
 * Optionally select the Date of this assignment for reference.
+* If you are assigning a larger quantity of licenses (e.g. to a whole department/team instead of a person), enter the quantity assigned.
 * Click **Save and Close** to save the assignment, or **Save and New** to create another assignment for the same contract line.
 
 ## Requests
