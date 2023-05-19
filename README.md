@@ -69,7 +69,7 @@ Example: You contract for 1,000 Microsoft 365 E5/G5 licenses for 3 years at $xx 
 * There are 2 Cloud flows that are turned OFF by default that will need to be turned ON if you wish to use the notification features related to contract expiry and license counts. You will need to edit each one to turn the Cloud Flow ON. Double check the ***FROM*** email address is set to the environment variable above.
   * ***MSFTPP.PA.ContractLines.Scheduled.CheckLicenseCount***
   * ***MSFTPP.PA.Contract.Schedule.CheckForReminder***
-* To use the Snapshot tables, you will need to modify the Cloud flows ***MSFTPP.PA.Assignment.Scheduled.GenerateSnapshot***. Modify the scheduled recurrence trigger to run on the schedule you want the snapshots to be taken.
+* To use the Snapshot tables, you will need to modify the Cloud flow ***MSFTPP.PA.Assignment.Scheduled.GenerateSnapshot***. Modify the scheduled recurrence trigger to run on the schedule you want the snapshots to be taken.
 
 ## Configure Data
 
