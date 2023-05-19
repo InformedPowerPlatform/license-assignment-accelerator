@@ -69,6 +69,7 @@ Example: You contract for 1,000 Microsoft 365 E5/G5 licenses for 3 years at $xx 
 * There are 2 Cloud flows that are turned OFF by default that will need to be turned ON if you wish to use the notification features related to contract expiry and license counts. You will need to edit each one to turn the Cloud Flow ON. Double check the ***FROM*** email address is set to the environment variable above.
   * ***MSFTPP.PA.ContractLines.Scheduled.CheckLicenseCount***
   * ***MSFTPP.PA.Contract.Schedule.CheckForReminder***
+* To use the Snapshot tables, you will need to modify the Cloud flows ***MSFTPP.PA.Assignment.Scheduled.GenerateSnapshot***. Modify the scheduled recurrence trigger to run on the schedule you want the snapshots to be taken.
 
 ## Configure Data
 
@@ -126,6 +127,11 @@ If you are utilizing the Power Platform Canvas App(s) where users can request a 
 
 
 # Release Notes
+## v3.0.0.12
+* Added a new Canvas App for Bulk Assignment of a specific contract line to multiple assignees.
+* Added new Snapshot tables and Power Automate flow to populate them. Process will review all active cost center records and snapshot all assignments for that cost center into a header and detail table row. This allows for periodic chargeback details bills to be exported and sent to cost center owners. Default is 1x per month but can be modified for other time periods.
+* Various UX enhancements to forms and views.
+
 ## v3.0.0.3 
 * Added a Quantity field to the Assignment table, updated the rollups to use qty * cost.
 
