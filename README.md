@@ -2,7 +2,7 @@
 
 Microsoft Dataverse Power Platform License Assignment Accelerator allows you to track Contracted License Assignments to People and Cost Centers/Agencies/Departments. These licenses can then be assigned to individual employees and track which cost center the charges apply to.
 
-Example: You contract for 1,000 Microsoft 365 E5/G5 licenses for 3 years at $xx per license, per month. You enter data into the **Contract** table first (e.g., Microsoft EA), including the date the contract will expire. Next, enter data for a related **Contract Line** (e.g., Microsoft 365 E5/G5), including details like the total number of licenses purchased, cost per license, and cost to charge out to the cost center. Once this is set up, you can then assign any of those licenses to a specific person and cost center. After that you can track who has what licenses assigned and set up an optional monthly chargeback invoice to that cost center.
+Example: You contract for 1,000 Microsoft 365 E5/G5 licenses for 3 years at $xx per license, per month. You enter data into the **Contract** table first (e.g., Microsoft EA), including the date the contract will expire. Next, enter data for a related **Contract Line** (e.g., Microsoft 365 E5/G5), including details like the total number of licenses purchased, cost per license, and cost to charge out to the cost center. Once this is set up, you can then assign any of those licenses to a specific person and cost center. Once data is loaded, you can track who has what licenses have been assigned and set up an optional monthly chargeback invoice to that cost center.
 
 ## Contents
 
