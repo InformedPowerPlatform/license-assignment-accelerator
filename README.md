@@ -127,6 +127,11 @@ If you are utilizing the Power Platform Canvas App(s) where users can request a 
 
 
 # Release Notes
+## v3.0.0.13
+* Patched the primary name length to several tables
+* Allow easier setup for Assignee's to be an Agency/Department. Last Name is no longer required, can use First Name for Agency/Dept
+* Added Error handling Try/Catch Scope(s) technique to the Monthly Snapshot Cloud Flow. Add your own error handler to the Catch scope
+
 ## v3.0.0.12
 * Added a new Canvas App for Bulk Assignment of a specific contract line to multiple assignees.
 * Added new Snapshot tables and Power Automate flow to populate them. Process will review all active cost center records and snapshot all assignments for that cost center into a header and detail table row. This allows for periodic chargeback details bills to be exported and sent to cost center owners. Default is 1x per month but can be modified for other time periods.
